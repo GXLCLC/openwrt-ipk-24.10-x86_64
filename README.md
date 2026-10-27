@@ -26,7 +26,7 @@ ImmortalWrt **24.10.x / x86_64** 固件用的第三方 IPK 集合，供 ImageBui
 | DNS | `luci-app-smartdns` | 27.189.38192~eead6d6 | 前端；`smartdns` 核心取自官方源 |
 | 流量监控 | `bandix` | 0.12.10-r1 | 含 `bandix`（x86-64 ELF） |
 | 流量监控 | `luci-app-bandix` | 27.299.55398~ced9e3e | LuCI 前端 |
-| 应用过滤 | `appfilter` | 7.0.1-r1 | 含 `oafd`（x86-64 ELF），OpenAppFilter 后端 |
+| 应用过滤 | `appfilter` | **2026.12.31-r1（重打包）** | 含 `oafd`（x86-64 ELF），OpenAppFilter 后端。**见下方说明** |
 | 应用过滤 | `luci-app-oaf` | 27.238.32154~dcc3364 | LuCI 前端 |
 | 网络唤醒 | `luci-app-wol` | 26.126.28706~6ac4a03 | 取自官方 luci 源，依赖 `etherwake`（官方源） |
 | 网络唤醒 | `luci-i18n-wol-zh-cn` | 26.204.72559~a5c40d1 | 中文语言包 |
@@ -40,6 +40,15 @@ ImmortalWrt **24.10.x / x86_64** 固件用的第三方 IPK 集合，供 ImageBui
 - `smartdns` `48-r1`（官方 packages 源）
 
 ## 注意事项
+
+0. **`appfilter` 为什么是重打包的 2026.12.31-r1**
+   官方 ImmortalWrt 24.10.6 源里也有一个 `appfilter 2026.04.20~569f93bf-r1`，
+   按 opkg 版本比较规则（`2026.04.20` > `7.0.1`）会**覆盖**本仓库原本的 7.0.1，
+   导致装进去的是官方那套老 API 后端。实测官方 oafd 里不含 `fwx` 字符串，
+   而 `luci-app-oaf` 前端是通过 `ubus("fwx","common",...)` 取数据的，
+   两者不匹配 → 表现为"加载失败、识别不到应用"。
+   因此把上游 7.0.1 重打包并提升版本号为 `2026.12.31-r1`，确保 opkg 选中配套的那一个。
+   除 Version / Source 字段外，包内容与上游 7.0.1 完全一致（oafd 281699 字节，含 fwx）。
 
 1. **`appfilter` + `luci-app-oaf` 与官方源的 `luci-app-appfilter` 互斥**，两者都装会争抢同一后端，请只保留一套。
 2. **EasyTier 不在本仓库**：该 feed 只提供 `luci-app-easytier`（前端），缺少 `easytier` 核心包。

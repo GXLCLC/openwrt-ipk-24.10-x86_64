@@ -20,3 +20,7 @@ luci-app-bandix
 # ── 应用过滤 OpenAppFilter（kmod-oaf 由官方 kmods 源提供）──
 appfilter
 luci-app-oaf
+
+# ── 网络唤醒（依赖 etherwake，由官方 packages 源提供）──
+luci-app-wol
+luci-i18n-wol-zh-cn

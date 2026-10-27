@@ -28,6 +28,8 @@ ImmortalWrt **24.10.x / x86_64** 固件用的第三方 IPK 集合，供 ImageBui
 | 流量监控 | `luci-app-bandix` | 27.299.55398~ced9e3e | LuCI 前端 |
 | 应用过滤 | `appfilter` | 7.0.1-r1 | 含 `oafd`（x86-64 ELF），OpenAppFilter 后端 |
 | 应用过滤 | `luci-app-oaf` | 27.238.32154~dcc3364 | LuCI 前端 |
+| 网络唤醒 | `luci-app-wol` | 26.126.28706~6ac4a03 | 取自官方 luci 源，依赖 `etherwake`（官方源） |
+| 网络唤醒 | `luci-i18n-wol-zh-cn` | 26.204.72559~a5c40d1 | 中文语言包 |
 
 ## 依赖来源（均可在官方 24.10.6 源中解析）
 

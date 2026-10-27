@@ -1,0 +1,22 @@
+# ImmortalWrt 24.10 / x86_64 预装插件清单
+# 每行一个包名，# 开头为注释，空行忽略。
+# 包名必须与 ipk 内 control 文件的 Package 字段一致。
+
+# ── 远程控制 ──
+ddnsto
+luci-app-ddnsto
+
+# ── DNS 去广告 ──
+adguardhome
+luci-app-adguardhome
+
+# ── SmartDNS 前端（smartdns 核心由官方 24.10.6 源提供）──
+luci-app-smartdns
+
+# ── 流量监控 ──
+bandix
+luci-app-bandix
+
+# ── 应用过滤 OpenAppFilter（kmod-oaf 由官方 kmods 源提供）──
+appfilter
+luci-app-oaf
